@@ -294,6 +294,8 @@
   #welcome .stack { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
   #welcome p { color: var(--muted); }
   #unsupported { color: var(--danger); }
+  #braveHelp { color: var(--ink); font-size: 14px; }
+  #braveHelp code { background: var(--panel); padding: 1px 5px; border-radius: 4px; user-select: all; font-size: 13px; }
   .hidden { display: none !important; }
 </style>
 <script>try{var t=localStorage.getItem("theme");if(t!=="system")document.documentElement.dataset.theme=(t==="dark"?"dark":"light");if(localStorage.getItem("sidebar")==="right")document.documentElement.dataset.side="right"}catch(e){}</script>
@@ -384,7 +386,8 @@
     <p>Daily entries and free-form notes are saved as plain Markdown files in the folder you choose.
        Pick a folder inside your Proton Drive and it will sync, encrypted, by the Proton Drive app.
        Nothing is sent anywhere else.</p>
-    <p id="unsupported" class="hidden">This browser can't open folders. Use Chrome, Brave, or Edge.</p>
+    <p id="unsupported" class="hidden"><strong>This browser can't open folders.</strong> Use Chrome, Edge, Brave, or another Chromium browser on a computer. Firefox, Safari, and browsers on iPhone or iPad aren't supported. If you are already on a Chromium browser, check its settings for a folder or file access option.</p>
+    <p id="braveHelp" class="hidden"><strong>Brave turns folder access off by default.</strong> To switch it on, paste <code>brave://flags/#file-system-access-api</code> into the address bar, set <em>File System Access API</em> to <em>Enabled</em>, then click <em>Relaunch</em>.</p>
     <div class="stack">
       <button id="reopenBtn" class="hidden"></button>
       <button id="chooseBtn">Choose journal folder</button>
@@ -1325,7 +1328,8 @@
 
   // ---------- startup ----------
   if (!("showDirectoryPicker" in window)) {
-    $("unsupported").classList.remove("hidden");
+    if (navigator.brave) $("braveHelp").classList.remove("hidden");
+    else $("unsupported").classList.remove("hidden");
     $("chooseBtn").disabled = true;
   } else {
     kvGet("dir").then((h) => {

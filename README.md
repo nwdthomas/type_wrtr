@@ -9,7 +9,7 @@ Nothing is sent anywhere. There is no account, no server, no tracking and no net
 ## Get started
 
 1. Download `type_wrtr.html` from the [latest release](../../releases/latest).
-2. Open it in **Chrome, Edge or Brave** (double-click the file, or drag it into the browser).
+2. Open it in **Chrome, Edge or Brave** (double-click the file, or drag it into the browser). In Brave, first switch on folder access: see [Brave setup](#brave-setup).
 3. Click **Choose journal folder** and pick a folder, for example one inside your Proton Drive.
 4. Start typing. Everything autosaves.
 
@@ -26,7 +26,7 @@ You can also use it without downloading: Open the project's page [here](https://
 - **Bold.** Select text and press Cmd/Ctrl+B to wrap it in `**double asterisks**`. It shows in bold as you write, and it stays plain Markdown in the file.
 - **Typewriter sounds.** Optional key clicks, a space bar thunk, backspace, a carriage return and a bell. Turn the whole thing or each sound on or off in Settings.
 - **Focus mode.** Hides everything except the page. Press Esc to leave.
-- **Light and dark themes**, and a setting to put the sidebar on either side.
+- **Light and dark themes.** It opens in light mode. Switch on the opening screen or in Settings, or choose System to follow your device. You can also put the sidebar on either side.
 - **Autosave**, plus Cmd/Ctrl+S to save right now.
 
 ## Your files
@@ -45,13 +45,25 @@ You can open, edit, back up or move them with any app that reads text or Markdow
 
 ## Browser support
 
-The app uses the File System Access API to read and write your folder directly.
+The app uses the File System Access API to read and write your folder directly. That is a feature of Chromium browsers, so which browser you use matters.
 
-| Works | Does not work |
+| Browser | Status |
 | --- | --- |
-| Chrome, Edge, Brave and other Chromium browsers on Mac, Windows, Linux and ChromeOS | Safari, Firefox, and any browser on iPhone or iPad |
+| Chrome, Microsoft Edge | Works |
+| Opera, Vivaldi, Arc and other Chromium browsers | Should work, but I have not tested them |
+| Brave | Works after you switch the feature on (see below) |
+| Firefox, Safari | Not supported on a computer |
+| Any browser on iPhone or iPad | Not supported, because they all use Safari's engine |
 
-On unsupported browsers the app tells you instead of failing quietly.
+If "Choose journal folder" is greyed out, your browser either does not have the feature or has it turned off. Try Chrome or Edge, or check the browser's settings for file or folder access. On an unsupported browser the app says so instead of failing quietly.
+
+### Brave setup
+
+Brave turns the folder feature off by default. To use type_wrtr in Brave:
+
+1. Paste `brave://flags/#file-system-access-api` into the address bar.
+2. Set **File System Access API** to **Enabled**.
+3. Click **Relaunch**.
 
 ## Privacy
 
@@ -66,4 +78,4 @@ There is no build step. The whole app, including the font, is one file: `type_wr
 ## License and credits
 
 - The type_wrtr code is released under the [MIT License](LICENSE).
-- The embedded font is [Courier Prime](https://fonts.google.com/specimen/Courier+Prime), copyright 2015 The Courier Prime Project Authors, used under the [SIL Open Font License 1.1](OFL.txt).
+- The embedded font is [Courier Prime](https://fonts.google.com/specimen/Courier+Prime), copyright 2015 The Courier Prime Project Authors, used under the [SIL Open Font License 1.1](OFL).
