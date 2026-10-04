@@ -15,7 +15,7 @@ Nothing is sent anywhere. There is no account, no server, no tracking and no net
 
 The next time you open it, click **Reopen** to go straight back to your folder.
 
-You can also use it without downloading: if the repository has GitHub Pages turned on, open the project's page. The app still runs entirely on your own computer.
+You can also use it without downloading: Open the project's page [here](https://nwdthomas.github.io/type_wrtr/) or go to https://nwdthomas.github.io/type_wrtr/. The app still runs entirely on your own computer.
 
 ## Features
 
