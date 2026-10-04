@@ -49,7 +49,7 @@ The app uses the File System Access API to read and write your folder directly. 
 
 | Browser | Status |
 | --- | --- |
-| Chrome, Microsoft Edge | Works |
+| Chrome, Microsoft Edge, Helium | Works |
 | Opera, Vivaldi, Arc and other Chromium browsers | Should work, but I have not tested them |
 | Brave | Works after you switch the feature on (see below) |
 | Firefox, Safari | Not supported on a computer |
