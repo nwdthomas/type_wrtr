@@ -290,12 +290,13 @@
   }
   #welcome h1 { letter-spacing: .1em; font-size: 22px; margin-top: 8px; }
   #welcome .logo.big { display: block; margin: 0 auto; stroke-width: 1.3; }
+  #welcome .wtheme { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 22px; color: var(--muted); font-size: 13px; }
   #welcome .stack { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
   #welcome p { color: var(--muted); }
   #unsupported { color: var(--danger); }
   .hidden { display: none !important; }
 </style>
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;if(localStorage.getItem("sidebar")==="right")document.documentElement.dataset.side="right"}catch(e){}</script>
+<script>try{var t=localStorage.getItem("theme");if(t!=="system")document.documentElement.dataset.theme=(t==="dark"?"dark":"light");if(localStorage.getItem("sidebar")==="right")document.documentElement.dataset.side="right"}catch(e){}</script>
 </head>
 <body>
 
@@ -327,7 +328,7 @@
         <button data-mode="light">Light</button>
         <button data-mode="dark">Dark</button>
       </div>
-      <p class="hint">System matches your device's light or dark setting. Light and Dark stay fixed.</p>
+      <p class="hint">Light is the default. System matches your device's light or dark setting. Light and Dark stay fixed.</p>
     </div>
     <div>
       <div class="shead">Sidebar</div>
@@ -388,6 +389,13 @@
       <button id="reopenBtn" class="hidden"></button>
       <button id="chooseBtn">Choose journal folder</button>
     </div>
+    <div class="wtheme">
+      <span>Theme</span>
+      <div class="seg" id="welcomeTheme">
+        <button class="small" data-mode="light">Light</button>
+        <button class="small" data-mode="dark">Dark</button>
+      </div>
+    </div>
   </div>
 
   <button id="exitFocus" class="ghost small">Exit focus</button>
@@ -436,7 +444,7 @@
       try { localStorage.setItem("theme", mode); } catch {}
     } else {
       delete root.dataset.theme;
-      try { localStorage.removeItem("theme"); } catch {}
+      try { localStorage.setItem("theme", "system"); } catch {}
     }
     renderSettings();
   }
@@ -1070,7 +1078,7 @@
   const cog = $("cogBtn");
 
   function renderSettings() {
-    document.querySelectorAll("#themeSeg button").forEach((b) =>
+    document.querySelectorAll("#themeSeg button, #welcomeTheme button").forEach((b) =>
       b.classList.toggle("active", b.dataset.mode === themeMode()));
     document.querySelectorAll("#sideSeg button").forEach((b) =>
       b.classList.toggle("active", b.dataset.mode === sideMode()));
@@ -1095,10 +1103,10 @@
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !panel.classList.contains("hidden")) toggleSettings(false);
   });
-  $("themeSeg").addEventListener("click", (e) => {
+  ["themeSeg", "welcomeTheme"].forEach((id) => $(id).addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (b) setTheme(b.dataset.mode);
-  });
+  }));
   $("sideSeg").addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (b) setSide(b.dataset.mode);
