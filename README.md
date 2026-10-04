@@ -4,7 +4,7 @@ A private journal that feels like a typewriter. It runs in your browser from a s
 
 Nothing is sent anywhere. There is no account, no server, no tracking and no network access at all. Your entries never leave your computer except through the sync app you already use.
 
-<img width="1156" height="451" alt="image" src="https://github.com/user-attachments/assets/b5104647-6024-479f-b4c0-36038221ed29" />
+<img width="1356" height="544" alt="image" src="https://github.com/user-attachments/assets/65a035f0-8708-4923-acef-7d44c5eae12b" />
 
 ## Get started
 
